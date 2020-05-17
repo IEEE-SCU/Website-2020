@@ -1,0 +1,23 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+<div class="container">
+	<div class="row justify-content-center align-items-center">
+
+
+		<form class='form' method="post" action="{% url 'logout' %}">
+		  {% csrf_token %}
+		  <h1>Sign Out</h1>
+		  {% if redirect_field_value %}
+		  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+		  {% endif %}
+      	  <p>Are you sure you want to sign out?</p>		  
+		  <button class='btn btn-outline-info' type="submit">Sign Out</button>
+		</form>
+	</div>
+</div>
+
+
+
+
+{% endblock %}

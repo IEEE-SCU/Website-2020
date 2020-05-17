@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container">
+	<div class="row justify-content-center align-items-center">
+	
+
+		<form class='form' method="POST" action="{% url 'login' %}">
+			{% csrf_token %}
+			<h2 class="text-center">Sign In</h2>
+			{{form|crispy}}
+			<br/>
+			<button class="primaryAction btn btn-outline-info mb-3" type="submit">Submit</button>
+		</form>
+	</div>
+</div>
+
+
+
+{% endblock %}

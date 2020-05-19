@@ -1,1 +1,1 @@
-web: gunicorn IEEEWebsite.wsgi
+web: gunicorn IEEEwebsite.wsgi

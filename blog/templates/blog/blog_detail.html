@@ -1,0 +1,31 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+{% load static %}
+    <!-- Offset jumbotron for Nav bar-->
+    <div class="jumbotron blog"></div>
+
+    <div class="container mt-5 mb-5">
+        <article class="media content-section">
+        <img src="{{ blog.author.userimage.image.url }}" class="rounded-circle article-img">
+        <div class="media-body">
+
+            <div class="article-metadata">
+            <a class="mr-2 author" href="{% url 'user_blogs' blog.author.pk %}">{{ blog.author }}</a>
+            <small class="text-muted">{{ blog.upload_date|date:'F d, Y' }}</small>
+            </div>
+
+            <h2 class="article-title">{{ blog.title }}</h2>
+
+            {% if blog.image %}
+            <div class="row mb-3">
+                <div class="col-10"><img src="{{blog.image.url}}" class="img-fluid"></div>
+            </div>
+            {% endif %}
+
+            <p class="article-content">{{ blog.content }}</p>
+
+        </div>
+
+        </article>
+    </div>
+{% endblock %}

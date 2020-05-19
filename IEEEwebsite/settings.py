@@ -24,8 +24,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("IEEE_WEBSITE_SECRETKEY")
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG')
+# SECURITY WARNING: don't run with debug turned on in production!	
+DEBUG = (os.environ.get('DEBUG') == "True")
 # os.environ.get('DEBUG')
 ALLOWED_HOSTS = ['ieee-scu.herokuapp.com', '127.0.0.1']
 

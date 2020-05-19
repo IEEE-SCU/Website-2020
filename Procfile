@@ -1,1 +1,1 @@
-web: gunicorn Website-2020-master.wsgi
+web: gunicorn IEEEWebsite.wsgi

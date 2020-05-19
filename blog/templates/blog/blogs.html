@@ -7,7 +7,8 @@
 	<div class="container blogs mt-3">
 		{% for blog in page_obj %}
 		<article class="media content-section">
-		  <img src="{{ blog.author.userimage.image.url }}" class="rounded-circle article-img">
+      <!-- {{ blog.author.userimage.image.url }} -->
+		  <img src="{% static 'images/logo2.png' %}" class="rounded-circle article-img">
 		  <div class="media-body">
 
 		    <div class="article-metadata">
@@ -15,7 +16,7 @@
 		      <small class="text-muted">{{ blog.upload_date|date:'F d, Y' }}</small>
 		    </div>
 
-		    <h2><a class="article-title" href="{% url 'blog_detail' blog.pk %}">{{ blog.title }}</a></h2>
+		    <h2>{{ blog.title }}</h2>
 
 		    <p class="article-content">{{ blog.content }}</p>
 

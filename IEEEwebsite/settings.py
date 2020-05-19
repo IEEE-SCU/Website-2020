@@ -21,18 +21,19 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'vuu%(dg=u9rifc!r)ftvzt2ya875_@8-jg$e+08-dd2n%^0sic'
+SECRET_KEY = os.environ.get(IEEE_WEBSITE_SECRETKEY)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
+DEBUG = os.environ.get('DEBUG')
+# os.environ.get('DEBUG')
+ALLOWED_HOSTS = ['ieee-scu.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'user.apps.UserConfig',
+    # 'user.apps.UserConfig',
+    
     'blog.apps.BlogConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
-    'storages'
+    # 'storages'
 ]
 
 MIDDLEWARE = [
@@ -125,16 +126,18 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # AWS credentials 
-AWS_ACCESS_KEY_ID = 'ASIAYDTZGAVCW2ZUGBSA'                     #os.environ.get('AWS-ACCESS-KEY')
-AWS_SECRET_ACCESS_KEY = '34ucuxZkN1+op2+yjBP8Ld2kd3xSZOl+ZL7XKfZl'                 #os.environ.get('AWS-SECRET-ACCESS')
-AWS_STORAGE_BUCKET_NAME = 'ieee-scu-files'                #os.environ.get('AWS-STORAGE-BUCKET-NAME')
 
-AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL = None
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# AWS_ACCESS_KEY_ID = 'ASIAYDTZGAVCW2ZUGBSA'                     #os.environ.get('AWS-ACCESS-KEY')
+# AWS_SECRET_ACCESS_KEY = '34ucuxZkN1+op2+yjBP8Ld2kd3xSZOl+ZL7XKfZl'                 #os.environ.get('AWS-SECRET-ACCESS')
+# AWS_STORAGE_BUCKET_NAME = 'ieee-scu-files'                #os.environ.get('AWS-STORAGE-BUCKET-NAME')
+
+# S3_REGION_NAME = 
+# AWS_S3_FILE_OVERWRITE = False
+# AWS_DEFAULT_ACL = None
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'

@@ -133,7 +133,6 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 django_heroku.settings(locals())
 
-print(DEBUG)
 # AWS credentials 
 
 # AWS_ACCESS_KEY_ID = 'ASIAYDTZGAVCW2ZUGBSA'                     #os.environ.get('AWS-ACCESS-KEY')

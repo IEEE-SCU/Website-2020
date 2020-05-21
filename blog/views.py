@@ -15,9 +15,9 @@ def blogs(request):
 	num_blogs = len(blogs)
 	return render(request, 'blog/blogs.html', {'num_blogs': num_blogs, 'page_obj': page_obj})
 
-# def blog_detail(request, blog_id):
-# 	blog = Blog.objects.get(pk=blog_id)
-# 	return render(request, 'blog/blog_detail.html', {'blog': blog})
+def blog_detail(request, blog_id):
+	blog = Blog.objects.get(pk=blog_id)
+	return render(request, 'blog/blog_detail.html', {'blog': blog})
 
 def user_blogs(request, user_id):
 	user = get_object_or_404(User, pk=user_id)

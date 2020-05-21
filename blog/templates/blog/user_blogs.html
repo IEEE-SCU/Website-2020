@@ -22,7 +22,7 @@
 
             </div>
 
-            <h2>{{ blog.title }}</h2>
+            <h2><a class="article-title" href="{% url 'blog_detail' blog.pk %}">{{ blog.title }}</a></h2>
 
             <p class="article-content">{{ blog.content }}</p>
 

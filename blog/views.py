@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Blog
+from .models import Blog, Author
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 from .forms import AddBlogForm
@@ -20,7 +20,7 @@ def blog_detail(request, blog_id):
 	return render(request, 'blog/blog_detail.html', {'blog': blog})
 
 def user_blogs(request, user_id):
-	user = get_object_or_404(User, pk=user_id)
+	user = get_object_or_404(Author, pk=user_id)
 	blogs = Blog.objects.filter(author=user)
 	paginator = Paginator(blogs, 5)
 	page_number = request.GET.get('page')

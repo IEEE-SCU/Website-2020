@@ -7,11 +7,11 @@ from django.contrib.auth.models import Permission
 
 
 class BlogAdmin(admin.ModelAdmin):
-	exclude = ['upload_date', 'author']
+	exclude = ['upload_date']
 
-	def save_model(self, request, obj, form, change):
-		obj.author = request.user
-		super().save_model(request, obj, form, change)
+	# def save_model(self, request, obj, form, change):
+	# 	# obj.author = request.user
+	# 	super().save_model(request, obj, form, change)
 
 
 admin.site.register(Blog, BlogAdmin)

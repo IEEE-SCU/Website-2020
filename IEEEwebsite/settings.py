@@ -21,14 +21,16 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("IEEE_WEBSITE_SECRETKEY")
-
 # SECURITY WARNING: don't run with debug turned on in production!	
 DEBUG = (os.environ.get('DEBUG') == "True")
-# os.environ.get('DEBUG')
-ALLOWED_HOSTS = ['ieee-scu.herokuapp.com', '127.0.0.1']
 
+# SECURITY WARNING: keep the secret key used in production secret!
+if DEBUG:
+    SECRET_KEY = "%v$b#7*1&=i&n4*i+otdsrj3ik2xqmjv&-p43remy+3)1@$m+j"
+else:
+    SECRET_KEY = os.environ.get("IEEE_WEBSITE_SECRETKEY")
+
+ALLOWED_HOSTS = ['ieee-scu.herokuapp.com', '127.0.0.1']
 
 # Application definition
 
@@ -87,7 +89,6 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
@@ -131,7 +132,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-django_heroku.settings(locals())
+
+if not DEBUG:
+    django_heroku.settings(locals())
 
 # AWS credentials 
 

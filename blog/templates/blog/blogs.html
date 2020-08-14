@@ -8,6 +8,7 @@
 		{% for blog in page_obj %}
 		<article class="media content-section">
       <!-- {{ blog.author.userimage.image.url }} -->
+
 		  <img src="{% static 'images/logo2.png' %}" class="rounded-circle article-img">
 		  <div class="media-body">
 
@@ -17,6 +18,10 @@
 		    </div>
 
 		    <h2><a class="article-title" href="{% url 'blog_detail' blog.pk %}">{{ blog.title }}</a></h2>
+
+        {% if blog.image_src %}
+        <img src="{{blog.image_src}}" alt="cover"/>
+        {% endif %}
 
 		    <p class="article-content">{{ blog.content }}</p>
 

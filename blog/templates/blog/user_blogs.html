@@ -1,73 +1,15 @@
-{% extends "blog/base.html" %}
+{% extends 'blog/base.html' %}
+{% block content %}
 {% load static %}
+    <!-- Offset jumbotron for Nav bar-->
+    <div class="jumbotron blog"></div>
+      
+    <div class="container blogs mt-5 mb-5">
+        <h1 class="article-title mb-3 ">Posts by {{ user }}</h1>
+        {% for blog in page_obj %}
+            {% include 'blog/blog_content.html' %}
+        {% endfor %}
 
-{% block content %} 
-  <div class="jumbotron blog"></div>
-  <div class="container mt-5 mb-5">
-    <h1 class="mb-3">Posts by {{ user }}</h1>
-
-    {% for blog in page_obj %}
-
-        <article class="container content-section">
-
-            <img src="{% static 'images/logo2.png' %}" class="rounded-circle article-img">
-
-            <div class="article-metadata">
-                <a class="mr-2 author" href="{% url 'user_blogs' blog.author.pk %}">{{ blog.author }}</a>
-                <small class="text-muted">{{ blog.upload_date|date:'F d, Y' }}</small>
-            </div>
-
-            <h2><a class="article-title" href="{% url 'blog_detail' blog.pk %}">{{ blog.title }}</a></h2>
-
-            {% if blog.image_src %}
-            <div class="row mb-3">
-                <div class="col-10"><img src="{{blog.image_src}}" class="img-fluid"></div>
-            </div>
-            {% endif %}
-
-            <p class="article-content">{{ blog.content | safe }}</p>
-
-        </article>
-
-    {% endfor %}
-
-      {% if num_blogs > 6 %}
-
-      {% if page_obj.has_previous %}
-
-        <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
-
-        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
-
-      {% endif %}
-
-
-
-      {% for num in page_obj.paginator.page_range %}
-
-        {% if page_obj.number == num %}
-
-          <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
-
-        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-
-          <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
-
-        {% endif %}
-
-      {% endfor %}
-
-
-
-      {% if page_obj.has_next %}
-
-        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
-
-        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
-
-      {% endif %}
-
-    {% endif %}
-
-  </div>
-{% endblock %}
+        {% include 'blog/blog_pages.html' %}
+    </div>
+{% endblock %}    

@@ -253,6 +253,16 @@ a.author:hover {
     height: 7rem;
 }
 
+.btn-outline-info {
+    color: #006db7;
+    border-color: #006db7; 
+}
+
+.btn-info, .btn-info:hover, .btn-outline-info:hover {
+    background-color: #006db7;
+    border-color: #006db7; 
+}
+
 /*-- Media Queries --*/
 @media (max-width: 767px) {
     .caption h1 {

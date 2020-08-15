@@ -15,8 +15,8 @@ def blogs(request):
 	num_blogs = len(blogs)
 	return render(request, 'blog/blogs.html', {'num_blogs': num_blogs, 'page_obj': page_obj})
 
-def blog_detail(request, blog_id):
-	blog = Blog.objects.get(pk=blog_id)
+def blog_detail(request, blog_slug):
+	blog = Blog.objects.get(slug=blog_slug)
 	return render(request, 'blog/blog_detail.html', {'blog': blog})
 
 def user_blogs(request, user_id):
